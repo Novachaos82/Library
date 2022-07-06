@@ -129,7 +129,7 @@ input[type="checkbox"] {
   grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-#container-box {
+.container-box {
   display: flex;
   flex-direction: column;
   height: fit-content;
@@ -151,7 +151,7 @@ input[type="checkbox"] {
   border-radius: 8px;
 }
 
-#removeBtn {
+.removeBtn {
   width: 100%;
   background: yellow;
   border: none;
