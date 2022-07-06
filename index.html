@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="container">
+        <h4>Library Project</h4>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button id="add-book-btn">+add Book</button>
+    </div>
+    <div class="modal" id="myModal">
+      <form action="" id="form" class="formControl">
+        <legend>
+          Add New Book<span class="close" id="close-btn">&times;</span>
+        </legend>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" placeholder="title" />
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" placeholder="author" />
+        <label for="pages">Pages:</label>
+        <input type="text" id="pages" name="pages" placeholder="pages" />
+
+        <div id="checkbox">
+          <label for="read">is Read?</label>
+          <input type="checkbox" name="read" id="read" class="checkbox" />
+        </div>
+
+        <button id="submit-modal-btn">Submit</button>
+      </form>
+    </div>
+    <div class="library-container">
+      <div id="container-box">
+        <div class="book-title">random</div>
+        <div class="author">by random</div>
+        <div class="pages">78pg</div>
+        <button class="readBtn">Not Read</button>
+
+        <button id="removeBtn">Remove</button>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>

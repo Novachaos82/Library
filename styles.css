@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ccc;
+  line-height: 1.5;
+  font-size: 0.875rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  font-size: 40px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: black;
+  color: white;
+}
+.btn-container {
+  margin-top: 10px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+#add-book-btn {
+  font-size: 16px;
+  padding: 15px;
+  background: black;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+}
+
+#add-book-btn:hover {
+  background: #333;
+}
+
+/*popup/modal*/
+
+.modal {
+  display: none; /*Hidden by default*/
+  position: fixed; /*Stay in place*/
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+legend {
+  margin-bottom: 20px;
+}
+#form {
+  border-radius: 7px;
+  background-color: #fefefe;
+  margin: 15% auto;
+  font-size: 22px;
+  position: relative;
+  padding: 20px;
+  width: 20%;
+  display: flex;
+
+  justify-content: center;
+  flex-direction: column;
+}
+input[type="text"] {
+  margin-bottom: 15px;
+  padding: 5px;
+  font-size: 18px;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  width: 20px;
+  height: 15px;
+}
+
+#checkbox {
+  margin-bottom: 15px;
+}
+
+#submit-modal-btn {
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #0d6efd;
+  background: #0d6efd;
+  font-size: 18px;
+  padding: 7px;
+  transition: all 0.3s linear;
+}
+#submit-modal-btn:hover {
+  background: #0a58ca;
+}
+.close {
+  cursor: pointer;
+  font-size: 25px;
+  float: right;
+  transform: scale(1.5);
+  transition: all 0.2s linear;
+  /*position: absolute;*/
+}
+
+.close:hover {
+  color: red;
+  transform: rotate(90deg) scale(1.5);
+}
+
+/* # library container and  boxes*/
+
+.library-container {
+  width: 100vw;
+  margin-top: 50px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 1%;
+  row-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 450px));
+  grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+#container-box {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 300px;
+  font-size: 18px;
+  background: white;
+  padding: 5%;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.readBtn {
+  background-color: #9fff9c;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#removeBtn {
+  width: 100%;
+  background: yellow;
+  border: none;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
