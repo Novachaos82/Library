@@ -15,6 +15,7 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 function createBook() {
+  let id = 0;
   let allBooks = document.querySelectorAll(".container-box");
   allBooks.forEach((box) => {
     box.remove();
@@ -38,6 +39,7 @@ function createBook() {
     pageDiv.classList.add("pages");
     pageDiv.textContent = obj.pages + " page";
 
+    /*read button*/
     readBtn.classList.add("readBtn");
     if (obj.isRead === true) {
       readBtn.textContent = "read";
@@ -59,9 +61,15 @@ function createBook() {
     });
     checkForRead(obj.isRead, readBtn);
 
+    /*remove button*/
     removeBtn.classList.add("removeBtn");
     removeBtn.textContent = "remove";
     removeBtn.addEventListener("click", removeBook);
+
+    /*setting id's for each book*/
+    bookDiv.dataset.ID = id;
+    console.log(id);
+
     bookDiv.appendChild(titleDiv);
     bookDiv.appendChild(authorDiv);
     bookDiv.appendChild(pageDiv);
@@ -70,7 +78,12 @@ function createBook() {
 
     libraryContainer.appendChild(bookDiv);
 
-    function removeBook() {}
+    function removeBook() {
+      library.splice(bookDiv.dataset.ID, 1);
+      createBook();
+    }
+    id++;
+    //console.log(library.findIndex(bookDiv));
   });
 }
 
@@ -81,6 +94,8 @@ function checkForRead(flag, btn) {
     btn.style.background = "red";
   }
 }
+
+/*data entry in modal*/
 const submitBtn = document.getElementById("submit-modal-btn");
 
 submitBtn.addEventListener("click", (e) => {
@@ -89,12 +104,7 @@ submitBtn.addEventListener("click", (e) => {
   const authorEle = document.getElementById("author");
   const pagesEle = document.getElementById("pages");
   const checkboxEle = document.getElementById("read");
-  let readValue = false;
-  //if (checkboxEle.value === "on") {
-  //  readValue = true;
-  //} else {
-  //  readValue = false;
-  //}
+
   console.log(checkboxEle.checked);
 
   if (
