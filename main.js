@@ -7,10 +7,11 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(title, author, pages, isRead) {
   const book = new Book(title, author, pages, isRead);
   library.push(book);
   console.log(library);
+  createBook();
 }
 
 function createBook() {
@@ -40,9 +41,39 @@ function createBook() {
   bookDiv.appendChild(readBtn);
   bookDiv.appendChild(removeBtn);
 
-  libraryContainer.appendChild(bookDiv);
+  //libraryContainer.appendChild(bookDiv);
 }
+const submitBtn = document.getElementById("submit-modal-btn");
 
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  const titleEle = document.getElementById("title");
+  const authorEle = document.getElementById("author");
+  const pagesEle = document.getElementById("pages");
+  const checkboxEle = document.getElementById("read");
+  let readValue = false;
+  if (checkboxEle.value === "on") {
+    readValue = true;
+  } else {
+    readValue = false;
+  }
+  console.log(checkboxEle.value);
+
+  if (
+    `${titleEle.value}` != "" &&
+    `${authorEle.value}` != "" &&
+    `${pagesEle.value}` != "" &&
+    readValue != ""
+  )
+    addBookToLibrary(
+      `${titleEle.value}`,
+      `${authorEle.value}`,
+      `${pagesEle.value}`,
+      readValue
+    );
+});
+
+/*modal*/
 const closeBtn = document.getElementById("close-btn");
 const modal = document.getElementById("myModal");
 
@@ -62,6 +93,4 @@ window.addEventListener("click", (e) => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  createBook();
-});
+document.addEventListener("DOMContentLoaded", () => {});
