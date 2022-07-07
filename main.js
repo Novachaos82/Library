@@ -15,33 +15,71 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 function createBook() {
-  const libraryContainer = document.getElementById("Library-container");
-  const bookDiv = document.createElement("div");
-  const titleDiv = document.createElement("div");
-  const authorDiv = document.createElement("div");
-  const pageDiv = document.createElement("div");
-  const removeBtn = document.createElement("button");
-  const readBtn = document.createElement("button");
+  let allBooks = document.querySelectorAll(".container-box");
+  allBooks.forEach((box) => {
+    box.remove();
+  });
+  library.forEach((obj) => {
+    const libraryContainer = document.querySelector(".library-container");
+    const bookDiv = document.createElement("div");
+    const titleDiv = document.createElement("div");
+    const authorDiv = document.createElement("div");
+    const pageDiv = document.createElement("div");
+    const removeBtn = document.createElement("button");
+    const readBtn = document.createElement("button");
 
-  bookDiv.classList.add("container-box");
+    bookDiv.classList.add("container-box");
+    titleDiv.classList.add("book-title");
+    titleDiv.innerHTML = `"` + obj.title + `"`;
 
-  titleDiv.classList.add("book-title");
+    authorDiv.classList.add("author");
+    authorDiv.textContent = "by " + obj.author;
 
-  authorDiv.classList.add("author");
+    pageDiv.classList.add("pages");
+    pageDiv.textContent = obj.pages + " page";
 
-  pageDiv.classList.add("pages");
+    readBtn.classList.add("readBtn");
+    if (obj.isRead === true) {
+      readBtn.textContent = "read";
+    } else {
+      readBtn.textContent = "not read";
+    }
 
-  readBtn.classList.add("readBtn");
+    readBtn.addEventListener("click", () => {
+      if (obj.isRead === true) {
+        console.log("yes");
+        obj.isRead = false;
+        readBtn.textContent = "not read";
+      } else {
+        console.log("no");
+        obj.isRead = true;
+        readBtn.textContent = "read";
+      }
+      checkForRead(obj.isRead, readBtn);
+    });
+    checkForRead(obj.isRead, readBtn);
 
-  removeBtn.classList.add("removeBtn");
+    removeBtn.classList.add("removeBtn");
+    removeBtn.textContent = "remove";
+    removeBtn.addEventListener("click", removeBook);
+    bookDiv.appendChild(titleDiv);
+    bookDiv.appendChild(authorDiv);
+    bookDiv.appendChild(pageDiv);
+    bookDiv.appendChild(readBtn);
+    bookDiv.appendChild(removeBtn);
 
-  bookDiv.appendChild(titleDiv);
-  bookDiv.appendChild(authorDiv);
-  bookDiv.appendChild(pageDiv);
-  bookDiv.appendChild(readBtn);
-  bookDiv.appendChild(removeBtn);
+    libraryContainer.appendChild(bookDiv);
 
-  //libraryContainer.appendChild(bookDiv);
+    function removeBook() {}
+  });
+}
+
+function checkForRead(flag, btn) {
+  if (flag === true) {
+    btn.style.background = "green";
+  } else {
+    btn.style.background = "red";
+  }
 }
 const submitBtn = document.getElementById("submit-modal-btn");
 
@@ -52,24 +90,24 @@ submitBtn.addEventListener("click", (e) => {
   const pagesEle = document.getElementById("pages");
   const checkboxEle = document.getElementById("read");
   let readValue = false;
-  if (checkboxEle.value === "on") {
-    readValue = true;
-  } else {
-    readValue = false;
-  }
-  console.log(checkboxEle.value);
+  //if (checkboxEle.value === "on") {
+  //  readValue = true;
+  //} else {
+  //  readValue = false;
+  //}
+  console.log(checkboxEle.checked);
 
   if (
     `${titleEle.value}` != "" &&
     `${authorEle.value}` != "" &&
     `${pagesEle.value}` != "" &&
-    readValue != ""
+    checkboxEle != ""
   )
     addBookToLibrary(
       `${titleEle.value}`,
       `${authorEle.value}`,
       `${pagesEle.value}`,
-      readValue
+      checkboxEle.checked
     );
 });
 
