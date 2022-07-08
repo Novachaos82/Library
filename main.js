@@ -43,7 +43,7 @@ function createBook() {
     authorDiv.textContent = "by " + obj.author;
 
     pageDiv.classList.add("pages");
-    pageDiv.textContent = obj.pages + " page";
+    pageDiv.textContent = obj.pages + " pages";
 
     /*read button*/
     readBtn.classList.add("readBtn");
