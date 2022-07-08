@@ -168,9 +168,9 @@ function getLocale() {
     console.log(objects);
     library = objects;
     createBook();
-    console.log("does exist");
+    console.log("exist");
   } else {
-    console.log("book doesn't exist");
+    console.log("doesn't exist");
   }
 }
 
