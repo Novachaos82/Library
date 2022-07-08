@@ -89,11 +89,34 @@ function createBook() {
 
 function checkForRead(flag, btn) {
   if (flag === true) {
-    btn.style.background = "green";
+    btn.style.background = "#9fff9c";
   } else {
-    btn.style.background = "red";
+    btn.style.background = "#ff9c9c";
   }
 }
+
+/*modal*/
+const closeBtn = document.getElementById("close-btn");
+const modal = document.getElementById("myModal");
+
+const newBookBtn = document.getElementById("add-book-btn");
+
+newBookBtn.addEventListener("click", () => {
+  document.getElementById("title").value = "";
+  document.getElementById("author").value = "";
+  document.getElementById("pages").value = "";
+  modal.style.display = "block";
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+});
 
 /*data entry in modal*/
 const submitBtn = document.getElementById("submit-modal-btn");
@@ -112,33 +135,13 @@ submitBtn.addEventListener("click", (e) => {
     `${authorEle.value}` != "" &&
     `${pagesEle.value}` != "" &&
     checkboxEle != ""
-  )
+  ) {
     addBookToLibrary(
       `${titleEle.value}`,
       `${authorEle.value}`,
       `${pagesEle.value}`,
       checkboxEle.checked
     );
-});
-
-/*modal*/
-const closeBtn = document.getElementById("close-btn");
-const modal = document.getElementById("myModal");
-
-const newBookBtn = document.getElementById("add-book-btn");
-
-newBookBtn.addEventListener("click", () => {
-  modal.style.display = "block";
-});
-
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target == modal) {
     modal.style.display = "none";
   }
 });
-
-document.addEventListener("DOMContentLoaded", () => {});
