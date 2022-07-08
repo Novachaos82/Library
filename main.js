@@ -7,9 +7,9 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
-if (localStorage.getItem("info")) {
-  getLocale();
-}
+//if (localStorage.getItem("info")) {
+//  getLocale();
+//}
 
 function addBookToLibrary(title, author, pages, isRead) {
   const book = new Book(title, author, pages, isRead);
@@ -88,6 +88,7 @@ function createBook() {
     function removeBook() {
       library.splice(bookDiv.dataset.ID, 1);
       createBook();
+      locale();
     }
     id++;
     locale();
@@ -169,3 +170,7 @@ function getLocale() {
     console.log("book doesn't exist");
   }
 }
+
+window.addEventListener("load", () => {
+  getLocale();
+});
