@@ -68,6 +68,9 @@ function createBook() {
     });
     checkForRead(obj.isRead, readBtn);
 
+    //readBtn.addEventListener("mouseover", () => {
+    //  readBtn.style.background = "yellow";
+    //});
     /*remove button*/
     removeBtn.classList.add("removeBtn");
     removeBtn.textContent = "remove";
@@ -98,9 +101,9 @@ function createBook() {
 
 function checkForRead(flag, btn) {
   if (flag === true) {
-    btn.style.background = "#9fff9c";
+    btn.classList.toggle("true");
   } else {
-    btn.style.background = "#ff9c9c";
+    btn.classList.toggle("false");
   }
 }
 

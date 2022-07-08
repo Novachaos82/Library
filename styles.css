@@ -63,11 +63,12 @@ legend {
 #form {
   border-radius: 7px;
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 25vh auto;
   font-size: 22px;
   position: relative;
   padding: 30px;
-  width: 20%;
+  width: 300px;
+  /*min-width: 100px;*/
   display: flex;
 
   justify-content: center;
@@ -139,9 +140,11 @@ input[type="checkbox"] {
   row-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
   grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+  justify-content: center;
 }
 
 .container-box {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   height: fit-content;
@@ -157,17 +160,30 @@ input[type="checkbox"] {
 .removeBtn {
   text-transform: capitalize;
   cursor: pointer;
-  background-color: #8cec89;
+
   border: none;
   width: 100%;
   font-size: 14px;
   margin-top: 20px;
   padding: 10px;
   border-radius: 8px;
+  transition: all 0.3s linear;
 }
 
-.readBtn:hover {
-  background: blue;
+.readBtn.true {
+  background-color: #8cec89;
+}
+
+.readBtn.false {
+  background-color: #ff9c9c;
+}
+
+.readBtn.true:hover {
+  background: #8cec8996;
+}
+
+.readBtn.false:hover {
+  background-color: #ff9c9c7e;
 }
 
 .removeBtn {
