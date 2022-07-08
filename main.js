@@ -7,10 +7,16 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
+if (localStorage.getItem("info")) {
+  getLocale();
+}
+
 function addBookToLibrary(title, author, pages, isRead) {
   const book = new Book(title, author, pages, isRead);
   library.push(book);
   console.log(library);
+  locale();
+  getLocale();
   createBook();
 }
 
@@ -58,6 +64,7 @@ function createBook() {
         readBtn.textContent = "read";
       }
       checkForRead(obj.isRead, readBtn);
+      createBook();
     });
     checkForRead(obj.isRead, readBtn);
 
@@ -83,6 +90,7 @@ function createBook() {
       createBook();
     }
     id++;
+    locale();
     //console.log(library.findIndex(bookDiv));
   });
 }
@@ -145,3 +153,19 @@ submitBtn.addEventListener("click", (e) => {
     modal.style.display = "none";
   }
 });
+
+function locale() {
+  localStorage.setItem("info", JSON.stringify(library));
+}
+
+function getLocale() {
+  if (localStorage.getItem("info")) {
+    let objects = JSON.parse(localStorage.getItem("info"));
+    console.log(objects);
+    library = objects;
+    createBook();
+    console.log("does exist");
+  } else {
+    console.log("book doesn't exist");
+  }
+}
